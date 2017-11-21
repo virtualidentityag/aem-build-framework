@@ -16,7 +16,8 @@ gulp.task('build:dev', function (callback) {
             'copy:data:dev',
             'copy:layouts:dev',
             'image:dev',
-            'eslint:dev'
+            'eslint:dev',
+            'indexr'
         ],
         callback
     );
@@ -25,6 +26,7 @@ gulp.task('build:dev', function (callback) {
 gulp.task('serve', function (callback) {
 
     runSequence(
+        'build:dev',
         [
             'watch:hb',
             'watch:js',
@@ -33,10 +35,6 @@ gulp.task('serve', function (callback) {
             'watch:sass',
             'watch:eslint',
             'watch:indexr'
-        ],
-        [
-            'build:dev',
-            'indexr'
         ],
         'connect',
         'livereload:init',
