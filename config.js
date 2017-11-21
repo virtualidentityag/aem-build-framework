@@ -23,6 +23,10 @@ module.exports = {
         ]
     },
 
+    eslint: {
+        quiet: true
+    },
+
     image: {
         verbose: true
     },

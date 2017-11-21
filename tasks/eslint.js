@@ -1,33 +1,35 @@
-/**
- * Created by marc.wissler on 08.09.16.
- */
+const gulp = require('gulp');
+const cached = require('gulp-cached');
+const eslint = require('gulp-eslint');
+const watch = require('gulp-watch');
+const runSequence = require('run-sequence');
+const config = require('./../config');
 
-var gulp = require('gulp');
-var cached = require('gulp-cached');
-var eslint = require('gulp-eslint');
-
-var merge = require('merge-stream');
-var config = require('./../config');
-
-// lint javascript
-gulp.task('eslint', function() {
-  var modules = config.moduleDirs;
-
-  var stream = merge();
-
-  modules.forEach(function(module){
-    stream.add(
-      gulp.src([
-        config.srcDir + module + '/js/*.js'
-      ])
+const eslintTask = (strict) => {
+    const stream = gulp.src(config.srcDir + '/components/**/*.js')
         .pipe(cached('eslint'))
-        .pipe(eslint({
-          quiet: true
-        }))
-        .pipe(eslint.format())
-        .pipe(eslint.failAfterError())
-    );
-  });
+        .pipe(eslint(config.eslint))
+        .pipe(eslint.format());
 
-  return stream;
+    if(strict) {
+        stream.pipe(eslint.failAfterError());
+    }
+
+    return stream;
+};
+
+gulp.task('eslint:dev', function () {
+    return eslintTask(false);
+});
+
+gulp.task('eslint:dist', function () {
+    return eslintTask(true);
+});
+
+gulp.task('watch:eslint', function () {
+    watch(config.srcDir + '/components/**/*.js', config.watch, function () {
+        runSequence(
+            'eslint'
+        );
+    });
 });
