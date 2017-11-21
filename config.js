@@ -4,6 +4,7 @@ const dist = './dist';
 const cwd = process.cwd();
 const os = require('os');
 const isWin = /^win/.test(os.platform());
+const _ = require('lodash');
 const projectConfig = require(cwd + '/projectConfig.js');
 
 module.exports = {
@@ -53,5 +54,5 @@ module.exports = {
 };
 
 if (projectConfig) {
-    Object.assign(module.exports, projectConfig);
+    _.merge(module.exports, projectConfig);
 }

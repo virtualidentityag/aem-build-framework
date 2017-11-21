@@ -2,8 +2,7 @@
   "name": "aem-build-framework",
   "version": "1.0.0",
   "description": "",
-  "devDependencies": {
-  },
+  "devDependencies": {},
   "repository": {
     "type": "git",
     "url": "https://github.com/virtualidentityag/aem-build-framework"
@@ -27,11 +26,12 @@
     "gulp-sourcemaps": "2.6.1",
     "gulp-uglify": "3.0.0",
     "gulp-watch": "4.3.11",
+    "lodash": "^4.17.4",
     "opn": "5.1.0",
+    "os": "^0.1.1",
     "path": "0.12.7",
     "require-dir": "0.3.2",
-    "run-sequence": "2.2.0",
-    "os": "^0.1.1"
+    "run-sequence": "2.2.0"
   },
   "engines": {
     "node": ">=6.12.0"
