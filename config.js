@@ -4,6 +4,7 @@ const dist = './dist';
 const cwd = process.cwd();
 const os = require('os');
 const isWin = /^win/.test(os.platform());
+const projectConfig = require(cwd + '/projectConfig.js');
 
 module.exports = {
 
@@ -50,3 +51,7 @@ module.exports = {
         usePolling: isWin
     }
 };
+
+if (projectConfig) {
+    Object.assign(module.exports, projectConfig);
+}
