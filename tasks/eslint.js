@@ -5,8 +5,13 @@ const watch = require('gulp-watch');
 const runSequence = require('run-sequence');
 const config = require('./../config');
 
+const sources = [
+    config.srcDir + '/components/**/*.js',
+    '!' + config.srcDir + '/components/**/vendor/**/*.js'
+];
+
 const eslintTask = (strict) => {
-    const stream = gulp.src(config.srcDir + '/components/**/*.js')
+    const stream = gulp.src(sources)
         .pipe(cached('eslint'))
         .pipe(eslint(config.eslint))
         .pipe(eslint.format());
@@ -27,9 +32,9 @@ gulp.task('eslint:dist', function () {
 });
 
 gulp.task('watch:eslint', function () {
-    watch(config.srcDir + '/components/**/*.js', config.watch, function () {
+    watch(sources, config.watch, function () {
         runSequence(
-            'eslint'
+            'eslint:dev'
         );
     });
 });
