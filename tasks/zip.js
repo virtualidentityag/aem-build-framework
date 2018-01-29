@@ -15,7 +15,7 @@ gulp.task('zip', function (cb) {
             variations.forEach((variation) => {
                 const zipName = `${componentName.trim()}-${variation}.zip`;
 
-                gulp.src(path.join(config.distDir, componentName, variation, '*'))
+                gulp.src(path.join(config.distDir, componentName, variation, '**'))
                     .pipe(zip(zipName))
                     .pipe(gulp.dest(path.join(config.distDir, componentName)));
             });
