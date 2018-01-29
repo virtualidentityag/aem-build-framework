@@ -1,6 +1,6 @@
 {
   "name": "aem-build-framework",
-  "version": "1.0.3-rc2",
+  "version": "1.0.3-rc3",
   "description": "",
   "devDependencies": {},
   "repository": {
@@ -26,6 +26,7 @@
     "gulp-sourcemaps": "2.6.1",
     "gulp-uglify": "3.0.0",
     "gulp-watch": "4.3.11",
+    "gulp-zip": "^4.1.0",
     "lodash": "^4.17.4",
     "opn": "5.1.0",
     "os": "^0.1.1",

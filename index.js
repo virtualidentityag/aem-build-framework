@@ -57,6 +57,7 @@ gulp.task('build', function (callback) {
             'image:dist'
         ],
         'uglify:resources:dist',
+        'zip',
         callback
     );
 });
