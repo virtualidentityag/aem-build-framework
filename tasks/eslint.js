@@ -11,16 +11,14 @@ const sources = [
 ];
 
 const eslintTask = (strict) => {
-    const stream = gulp.src(sources)
+    gulp.src(sources)
         .pipe(cached('eslint'))
         .pipe(eslint(config.eslint))
         .pipe(eslint.format());
 
-    if(strict) {
+    if (strict) {
         stream.pipe(eslint.failAfterError());
     }
-
-    return stream;
 };
 
 gulp.task('eslint:dev', function () {
