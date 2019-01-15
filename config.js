@@ -35,17 +35,6 @@ module.exports = {
         port: 35730
     },
 
-    replaceStrings: [
-        {
-            subStr: '"./',
-            newSubStr: '"./application_root/../'
-        },
-        {
-            subStr: '[./',
-            newSubStr: '[./application_root/../'
-        }
-    ],
-
     uglify: {
         ignoreList: [
             '/aem-module-reloaded/*/resources/js/uglify-ignore-me.js'
